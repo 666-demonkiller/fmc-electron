@@ -1,0 +1,82 @@
+{
+  "name": "fillmycycle",
+  "productName": "Fill My Cycle",
+  "version": "1.0.0",
+  "description": "Lab Evaluation Sheet Filler",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "electron-forge start",
+    "package": "electron-forge package",
+    "make": "electron-forge make",
+    "publish": "electron-forge publish",
+    "lint": "echo \"No linting configured\"",
+    "build-installer": "electron-builder",
+    "dist::linux": "electron-builder --linux"
+  },
+  "build": {
+    "appId": "fillmycycle",
+    "win": {
+      "target": ["nsis"],
+      "icon": "src/fmc.png"
+    },
+    "nsis": {
+      "installerIcon": "src/fmc.png",
+      "uninstallerIcon": "src/fmc.png",
+      "uninstallDisplayName": "Fill My Cycle",
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true
+    },
+    "linux": {
+      "target": [
+        "deb",
+        "snap",
+        "pacman"
+      ],
+      "category": "Utility"
+    }
+  },
+  "keywords": [],
+  "author": {
+    "name": "demonkiller",
+    "email": "hiranyagarbh7@gmail.com"
+  },
+  "license": "GPLv3",
+  "config": {
+    "forge": {
+      "packagerConfig": {},
+      "makers": [
+        {
+          "name": "@electron-forge/maker-squirrel",
+          "config": {
+            "name": "fillmycycle"
+          }
+        },
+        {
+          "name": "@electron-forge/maker-zip",
+          "platforms": [
+            "darwin"
+          ]
+        },
+        {
+          "name": "@electron-forge/maker-deb",
+          "config": {
+            "name": "fillmycycle",
+            "icon": "src/fmc.png"
+          }
+        }
+      ]
+    }
+  },
+  "dependencies": {
+    "electron-squirrel-startup": "^1.0.0"
+  },
+  "devDependencies": {
+    "electron-builder": "^22.10.5",
+    "@electron-forge/cli": "^6.0.0-beta.54",
+    "@electron-forge/maker-deb": "^6.0.0-beta.54",
+    "@electron-forge/maker-rpm": "^6.0.0-beta.54",
+    "@electron-forge/maker-squirrel": "^6.0.0-beta.54",
+    "@electron-forge/maker-zip": "^6.0.0-beta.54",
+    "electron": "12.0.1"
+  }
+}
